@@ -8,31 +8,31 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@master
-    - name: mkdir homework/unique_ptr/build 
-      run: mkdir homework/unique_ptr/build
+    - name: mkdir build 
+      run: mkdir build
     - name: Compile
-      working-directory: homework/unique_ptr/build
+      working-directory: build
       run: |
         cmake ..
         make
     - name: Run test 
-      working-directory: homework/unique_ptr/build
+      working-directory: build
       run: ctest -V
   Valgrind:
     runs-on: ubuntu-20.04
     steps:
     - name: Check out code
       uses: actions/checkout@master
-    - name: mkdir homework/unique_ptr/build 
-      run: mkdir homework/unique_ptr/build
+    - name: mkdir build 
+      run: mkdir build
     - name: ValgrindTest
-      working-directory: homework/unique_ptr/build
+      working-directory: build
       run: |
         sudo apt install valgrind
         cmake ..
         make
     - name: Run valgrind 
-      working-directory: homework/unique_ptr/build
+      working-directory: build
       run: |
         valgrind ./UniquePtr-ut
         valgrind ./UniquePtr
